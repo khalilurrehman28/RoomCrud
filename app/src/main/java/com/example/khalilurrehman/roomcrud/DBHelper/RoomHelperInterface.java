@@ -13,7 +13,7 @@ import java.util.List;
 public interface RoomHelperInterface {
     //insert single row into databse
     @Insert
-    void insert (NotesData notes);
+    void insert (NotesData... notes);
 
     //get all rows from the database
     @Query("SELECT * FROM  "+ Notes_tbl.NOTES_TBL)

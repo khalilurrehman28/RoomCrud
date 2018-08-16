@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     assert data != null;
                         //Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show();
                         //readDataFromDB();
+                        Log.d("Intent", "onActivityResult: "+data.getStringExtra("note_title")+"-----"+data.getStringExtra("note_text"));
                         new SaveData(data.getStringExtra("note_title"),data.getStringExtra("note_text"),getDateTime());
                 }
                 break;
@@ -149,7 +151,9 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             notesDataList.clear();
             List<NotesData> notesDataListLocal = db.roomHelperInterface().getAll();
+            Log.d("Total", "doInBackground: "+notesDataListLocal.size());
             for (NotesData item: notesDataListLocal) {
+                Log.d("Data", "doInBackground: "+item.getTITLE()+"----"+item.getNOTES());
                 notesDataList.add(item);
                 notesAdapter.notifyDataSetChanged();
             }

@@ -10,10 +10,9 @@ import com.example.khalilurrehman.roomcrud.Helper.Notes_tbl;
 @Entity(tableName = Notes_tbl.NOTES_TBL)
 public class NotesData {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Notes_tbl.ID)
-    public Integer ID;
+    public long ID;
     @ColumnInfo(name = Notes_tbl.TITLE)
     public String TITLE;
     @ColumnInfo(name = Notes_tbl.NOTES)
